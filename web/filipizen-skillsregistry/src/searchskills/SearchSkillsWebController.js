@@ -57,13 +57,23 @@ const SearchSkillsWebController = ({
 
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
-      <Page>
-        <Content center>
+        <div>
           <PageComponent page={page} {...compProps} />
-        </Content>
-      </Page>
+        </div>
     </StateProvider>
   )
+
+  {/** 
+    return (
+      <StateProvider initialState={initialState} reducer={reducer}>
+        <Page>
+          <Content center>
+            <PageComponent page={page} {...compProps} />
+          </Content>
+        </Page>
+      </StateProvider>
+    )
+   */}
 }
 
 export default SearchSkillsWebController
