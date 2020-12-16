@@ -63,7 +63,7 @@ const SearchSkillsWebController = ({
     </StateProvider>
   )
 
-  {/** 
+  {/**
     return (
       <StateProvider initialState={initialState} reducer={reducer}>
         <Page>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Title,
   Button,
@@ -6,23 +6,55 @@ import {
   BackLink,
   useData,
   Text,
-  Card
+  Card,
+  Service
 } from 'rsi-react-web-components'
-import "rsi-react-web-components/dist/index.css";
 
 import styles from "./SearchResultScreen.css";
-import lgulogo from "/img/logo.png"
+import lgulogo from "/img/logo.png";
+import Profile from "./components/Profile";
 
+const svc = Service.lookup("JobSearchService", "skills");
+
+const initialSearchResults = [
+  {
+    name: "JASON",
+    jobtitle: "MASON",
+    workexperience: "5 years",
+  },
+  {
+    name: "JUAN",
+    jobtitle: "PROGRAMMER",
+    workexperience: "2 years",
+  },
+  {
+    name: "PETERSON",
+    jobtitle: "ENGINEER",
+    workexperience: "5 years",
+  },
+  {
+    name: "SHARON",
+    jobtitle: "WAITRESS",
+    workexperience: "1 years",
+  },
+];
+
+const initialJobTitles = [
+  {title: "PROGRAMMER", count: 2},
+  {title: "CASHIER", count: 5},
+  {title: "DRIVER", count: 10},
+]
 
 const SearchResultScreen = ({
-  title,
-  partner,
-  moveNextStep,
-  movePrevStep,
+  searchText
 }) => {
 
+  const [error, setError] = useState();
+  const [searchResults, setSearchResults] = useState(initialSearchResults);
+  const [jobTitles, setJobTitles] = useState(initialJobTitles);
+
   return (
-    <div className={styles.SearchResultScreen}>
+    <div className={styles.searchResult}>
       <div className={styles.SearchResultScreen__search}>
         <img src={lgulogo} alt="lgu logo" className={styles.SearchResultScreen__search__img} />
         <input type="text" className={styles.SearchResultScreen__search__input} placeholder=" Search.. " />
@@ -31,46 +63,19 @@ const SearchResultScreen = ({
       <p className={styles.SearchResultScreen__p}>4 profile results</p>
       <div className={styles.SearchResultScreen__result}>
         <div className={styles.SearchResultScreen__result__SearchFilter}>
-          <p>Searched: <i>Mason</i></p>
+          <p>Searched: <i>{searchText}</i></p>
           <p> Sorted by: <br /><span><b>Surname</b> - Alphabetically</span></p>
           <p><strong>Job Titles</strong></p>
           <div className={styles.SearchResultScreen__result__SearchFilter__JobTitles}>
-            <p><a href="#">PROGRAMMER</a><span>(2)</span></p>
-            <p><a href="#">CASHIER</a><span>(12)</span></p>
-            <p><a href="#">DRIVER</a><span>(21)</span></p>
+            {jobTitles.map( jobTitle => (
+              <p><a href="#">{jobTitle.title}</a><span>({jobTitle.count})</span></p>
+            ))}
           </div>
         </div>
-
         <div className={styles.SearchResultScreen__result__ProfileResult}>
-          <div className={styles.SearchResultScreen__result__ProfileResult__Profile}>
-            <p>Canonoy, Jason Delle</p>
-            <p>Mason</p>
-            <p>Work Experience: 5 years</p>
-            <p><a href="#">Request Profile</a></p>
-          </div>
-          <div className={styles.SearchResultScreen__result__ProfileResult__Profile}>
-            <p>Canonoy, Jason Delle</p>
-            <p>Mason</p>
-            <p>Work Experience: 5 years</p>
-            <p><a href="#">Request Profile</a></p>
-          </div>
-          <div className={styles.SearchResultScreen__result__ProfileResult__Profile}>
-            <p>Canonoy, Jason Delle</p>
-            <p>Mason</p>
-            <p>Work Experience: 5 years</p>
-            <p><a href="#">Request Profile</a></p>
-          </div>
-          <div className={styles.SearchResultScreen__result__ProfileResult__Profile}>
-            <p>Canonoy, Jason Delle</p>
-            <p>Mason</p>
-            <p>Work Experience: 5 years</p>
-            <p><a href="#">Request Profile</a></p>
-          </div>
+          { searchResults.map(result =>  <Profile {...result} /> )}
         </div>
-
-
       </div>
-
     </div>
   )
 }

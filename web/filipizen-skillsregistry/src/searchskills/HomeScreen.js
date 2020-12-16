@@ -23,13 +23,14 @@ const HomeScreen = ({
   movePrevStep,
 }) => {
 
-  const [mode, setMode] = useState("initial");
+  const [mode, setMode] = useState("init");
+  const [searchText, setSearchText] = useState();
 
   const [ctx, dispatch] = useData();
   const { txntype } = ctx;
 
   if (mode === "search") {
-    return <SearchResultScreen />
+    return <SearchResultScreen searchText={searchText}/>
   }
 
 
@@ -39,7 +40,12 @@ const HomeScreen = ({
         <img src={lgulogo} alt="lgu logo"  />
       </div>
       <div className={styles.HomeScreen__searchbar} >
-        <input type="text" className={styles.HomeScreen__searchbar__input} placeholder=" job title, course, skill or training " />
+        <input type="text"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          className={styles.HomeScreen__searchbar__input}
+          placeholder=" job title, course, skill or training "
+        />
         <button type="button"  className={styles.HomeScreen__searchbar__button} onClick={() => setMode("search")}><span aria-hidden="true"></span>Find Profile</button>
       </div>
     </div>
