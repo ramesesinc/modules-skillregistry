@@ -20,22 +20,22 @@ const initialSearchResults = [
   {
     name: "JASON",
     jobtitle: "MASON",
-    workexperience: "5 years",
+    experience: "5 years",
   },
   {
     name: "JUAN",
     jobtitle: "PROGRAMMER",
-    workexperience: "2 years",
+    experience: "2 years",
   },
   {
     name: "PETERSON",
     jobtitle: "ENGINEER",
-    workexperience: "5 years",
+    experience: "5 years",
   },
   {
     name: "SHARON",
     jobtitle: "WAITRESS",
-    workexperience: "1 years",
+    experience: "1 years",
   },
 ];
 
@@ -56,23 +56,23 @@ const SearchResultScreen = ({
   return (
     <div className={styles.searchResult}>
       <div className={styles.SearchResultScreen__search}>
-        <img src={lgulogo} alt="lgu logo" className={styles.SearchResultScreen__search__img} />
-        <input type="text" className={styles.SearchResultScreen__search__input} placeholder=" Search.. " />
-        <button type="button" className={styles.SearchResultScreen__search__button} onClick={() => setMode("search")}><span aria-hidden="true"></span>Find Profile</button>
+        <img src={lgulogo} alt="lgu logo" className={styles.SearchResultScreen__img} />
+        <input type="text" className={styles.SearchResultScreen__input} placeholder=" Search.. " />
+        <button type="button" className={`${styles.btn} ${styles.gradientBlue} ${styles.small}`} onClick={() => setMode("search")}><span aria-hidden="true"></span>Find Profile</button>
       </div>
       <p className={styles.SearchResultScreen__p}>4 profile results</p>
       <div className={styles.SearchResultScreen__result}>
-        <div className={styles.SearchResultScreen__result__SearchFilter}>
+        <div className={styles.SearchResultScreen__SearchFilter}>
           <p>Searched: <i>{searchText}</i></p>
           <p> Sorted by: <br /><span><b>Surname</b> - Alphabetically</span></p>
           <p><strong>Job Titles</strong></p>
-          <div className={styles.SearchResultScreen__result__SearchFilter__JobTitles}>
+          <div className={styles.SearchResultScreen__JobTitles}>
             {jobTitles.map( jobTitle => (
               <p><a href="#">{jobTitle.title}</a><span>({jobTitle.count})</span></p>
             ))}
           </div>
         </div>
-        <div className={styles.SearchResultScreen__result__ProfileResult}>
+        <div className={styles.SearchResultScreen__ProfileResult}>
           { searchResults.map(result =>  <Profile {...result} /> )}
         </div>
       </div>

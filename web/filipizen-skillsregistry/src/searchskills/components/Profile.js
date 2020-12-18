@@ -4,13 +4,13 @@ import styles from './Profile.css'
 const Profile = ({
   name,
   jobtitle,
-  workexperience
+  experience
 }) => {
   return (
-    <div >
+    <div className={styles.SearchResultScreen__Profile}>
       <p>{name}</p>
       <p>{jobtitle}</p>
-      <p>{workexperience}</p>
+      <p>{experience}</p>
       <p>
         <a href='#'>Request Profile</a>
       </p>

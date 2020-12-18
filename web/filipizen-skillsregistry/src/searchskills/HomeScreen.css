@@ -12,7 +12,7 @@
   justify-content: center;
   margin-top: 20px;
 }
-.HomeScreen__searchbar__input {
+.HomeScreen__input {
   display: block;
   width: 40%;
   height: 34px;
@@ -31,21 +31,24 @@
   -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-.HomeScreen__searchbar__input:focus, .HomeScreen__searchbar__input:active{
+.HomeScreen__input:focus, .HomeScreen__input:active{
   outline: 0px;
 }
-.HomeScreen__searchbar__button {
+.btn {
+  color: #000;
+  height: 48px;
+}
+.gradientBlue{
   background-color: #3163f2;
   background: linear-gradient(to bottom,#3163f2,#2b57d5);
   border: 1px solid #1c4ed9;
-  border-top: 1px solid #69F;
-  color: #fff;
-  height: 48px;
   border-radius: 1px;
+  border-top: 1px solid #69F;
   font-weight: 300;
   font-size: 16px;
   -webkit-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
   -ms-transition: all 0.4s ease;
   transition: all 0.4s ease;
+  color: #fff;
 }

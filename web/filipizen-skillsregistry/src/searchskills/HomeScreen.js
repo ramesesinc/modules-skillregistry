@@ -43,10 +43,10 @@ const HomeScreen = ({
         <input type="text"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
-          className={styles.HomeScreen__searchbar__input}
+          className={styles.HomeScreen__input}
           placeholder=" job title, course, skill or training "
         />
-        <button type="button"  className={styles.HomeScreen__searchbar__button} onClick={() => setMode("search")}><span aria-hidden="true"></span>Find Profile</button>
+        <button type="button"  className={`${styles.btn} ${styles.gradientBlue}` } onClick={() => setMode("search")}><span aria-hidden="true"></span>Find Profile</button>
       </div>
     </div>
   )
