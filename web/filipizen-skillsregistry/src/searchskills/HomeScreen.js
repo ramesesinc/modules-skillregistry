@@ -13,7 +13,7 @@ import "rsi-react-web-components/dist/index.css";
 import styles from "./HomeScreen.css";
 
 import SearchResultScreen from "./SearchResultScreen";
-import lgulogo from "/img/logo.png"
+import lgulogo from "/assets/logo.png"
 
 
 const HomeScreen = ({

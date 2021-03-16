@@ -11,7 +11,7 @@ import {
 } from 'rsi-react-web-components'
 
 import styles from "./SearchResultScreen.css";
-import lgulogo from "/img/logo.png";
+import lgulogo from "/assets/logo.png";
 import Profile from "./components/Profile";
 
 const svc = Service.lookup("JobSearchService", "skills");
